@@ -285,26 +285,12 @@
   .aff-arrow { color: var(--orange); font-size: 18px; }
 
   .popup-footer {
-    display: flex;
-    gap: 8px;
     padding: 0 20px 20px;
   }
-  .btn-skip {
-    flex: 1;
-    padding: 10px;
-    font-size: 12px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    cursor: pointer;
-    color: var(--muted);
-    transition: border-color 0.15s;
-  }
-  .btn-skip:hover { border-color: var(--muted); }
   .btn-confirm {
-    flex: 2;
-    padding: 10px;
-    font-size: 13px;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
     font-weight: 500;
     background: var(--green);
     color: #fff;
@@ -390,7 +376,6 @@
       </a>
     </div>
     <div class="popup-footer">
-      <button class="btn-skip" onclick="doDownload()">Bỏ qua</button>
       <button class="btn-confirm" onclick="doDownloadFromAff()">Xem Shopee → Tải file</button>
     </div>
   </div>
