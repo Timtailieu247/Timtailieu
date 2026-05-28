@@ -403,16 +403,18 @@ async function loadTemplates() {
 
 function normalize(str) {
   return str.toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/đ/g,'d');
+    .replace(/đ/g, 'd')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 function search(query) {
   if (!query.trim()) return [];
-  const q = normalize(query);
+  const words = normalize(query).split(/\s+/).filter(Boolean);
   return templates.filter(t => {
-    const haystack = normalize(t.name + ' ' + (t.keywords||[]).join(' ') + ' ' + t.category);
-    return haystack.includes(q);
+    const haystack = normalize(
+      t.name + ' ' + (t.keywords||[]).join(' ') + ' ' + t.category
+    );
+    return words.every(w => haystack.includes(w));
   });
 }
 
