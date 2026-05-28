@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template Quán Cà Phê — Tìm & Tải Miễn Phí</title>
+<style>
+  :root {
+    --bg: #f9f8f5;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #e0ddd6;
+    --green: #1D9E75;
+    --green-dark: #0F6E56;
+    --green-light: #E1F5EE;
+    --orange: #FA8922;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HERO / SEARCH ── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px;
+    text-align: center;
+    transition: padding 0.4s;
+  }
+  .hero.compact { padding: 32px 20px 24px; }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--green-dark);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .hero.compact .logo { font-size: 13px; margin-bottom: 16px; }
+
+  .tagline {
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .hero.compact .tagline { display: none; }
+
+  .sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .hero.compact .sub { display: none; }
+
+  .search-wrap {
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 16px 52px 16px 20px;
+    font-size: 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    background: var(--white);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+  .search-input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
+  }
+  .search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+  }
+  .search-icon svg { width: 20px; height: 20px; }
+
+  .hint {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .hint span {
+    display: inline-block;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin: 3px 4px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .hint span:hover { border-color: var(--green); color: var(--green); }
+
+  /* ── RESULTS ── */
+  .results {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+  .results-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+  .result-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+  }
+  .result-item:hover {
+    border-color: var(--green);
+    transform: translateY(-1px);
+  }
+  .item-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+  .item-icon.pdf { background: #FAECE7; }
+  .item-icon.word { background: #E6F1FB; }
+  .item-info { flex: 1; }
+  .item-name { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .item-meta { font-size: 12px; color: var(--muted); }
+  .item-cat {
+    font-size: 11px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .btn-dl {
+    padding: 8px 16px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .btn-dl:hover { background: var(--green-dark); }
+
+  .empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .empty strong { display: block; font-size: 32px; margin-bottom: 8px; }
+
+  /* ── POPUP OVERLAY ── */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .overlay.show { display: flex; }
+
+  .popup {
+    background: var(--white);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 360px;
+    overflow: hidden;
+    animation: popIn 0.2s ease;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.95) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .popup-header {
+    background: var(--orange);
+    padding: 18px 20px 16px;
+    position: relative;
+  }
+  .popup-header .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+  .popup-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+  }
+  .popup-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popup-body { padding: 18px 20px 0; }
+  .popup-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .aff-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 16px;
+    background: #fff7f0;
+    border: 1.5px solid var(--orange);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+  .aff-btn:hover { background: #fff0e0; }
+  .aff-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .aff-text { flex: 1; text-align: left; }
+  .aff-text strong { display: block; font-size: 13px; color: var(--text); }
+  .aff-text span { font-size: 11px; color: var(--muted); }
+  .aff-arrow { color: var(--orange); font-size: 18px; }
+
+  .popup-footer {
+    display: flex;
+    gap: 8px;
+    padding: 0 20px 20px;
+  }
+  .btn-skip {
+    flex: 1;
+    padding: 10px;
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: border-color 0.15s;
+  }
+  .btn-skip:hover { border-color: var(--muted); }
+  .btn-confirm {
+    flex: 2;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-confirm:hover { background: var(--green-dark); }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 13px;
+    z-index: 9999;
+    transition: transform 0.3s ease, opacity 0.3s;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero" id="hero">
+  <div class="logo">☕ Template Cà Phê</div>
+  <h1 class="tagline">Tìm tài liệu bạn cần</h1>
+  <p class="sub">Kho template miễn phí cho chủ quán cà phê — menu, nhân sự, tài chính, vận hành</p>
+
+  <div class="search-wrap">
+    <input
+      class="search-input"
+      id="searchInput"
+      type="text"
+      placeholder="Nhập tên template... vd: menu, chấm công, doanh thu"
+      autocomplete="off"
+    />
+    <span class="search-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+    </span>
+  </div>
+
+  <div class="hint">
+    Thử tìm:
+    <span onclick="quickSearch('menu')">menu</span>
+    <span onclick="quickSearch('chấm công')">chấm công</span>
+    <span onclick="quickSearch('doanh thu')">doanh thu</span>
+    <span onclick="quickSearch('khai trương')">khai trương</span>
+  </div>
+</div>
+
+<div class="results" id="results"></div>
+
+<!-- POPUP -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="popup-header">
+      <div class="label">📦 Bạn đang tải</div>
+      <h3 id="popupTitle">—</h3>
+      <button class="popup-close" onclick="closePopup()">✕</button>
+    </div>
+    <div class="popup-body">
+      <p>Tài liệu này miễn phí 100%. Bạn có thể ủng hộ mình bằng cách ghé xem 1 sản phẩm trên Shopee trước nhé 🙏</p>
+      <a class="aff-btn" id="affLink" href="#" target="_blank" rel="noopener">
+        <div class="aff-logo">🛒</div>
+        <div class="aff-text">
+          <strong>Xem ngay trên Shopee</strong>
+          <span>Dụng cụ & thiết bị cho quán cà phê</span>
+        </div>
+        <span class="aff-arrow">→</span>
+      </a>
+    </div>
+    <div class="popup-footer">
+      <button class="btn-skip" onclick="doDownload()">Bỏ qua</button>
+      <button class="btn-confirm" onclick="doDownloadFromAff()">Xem Shopee → Tải file</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">⬇ Đang mở file tải xuống...</div>
+
+<script>
+const AFFILIATE_URL = 'https://shope.ee/THAY_LINK_AFF_CUA_BAN';
+
+let templates = [];
+let currentItem = null;
+
+const fileIcons = { Excel: '📊', PDF: '📄', Word: '📝' };
+const fileBg    = { Excel: '', PDF: 'pdf', Word: 'word' };
+
+async function loadTemplates() {
+  try {
+    const res = await fetch('templates.json');
+    templates = await res.json();
+  } catch(e) {
+    templates = [];
+  }
+}
+
+function normalize(str) {
+  return str.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/đ/g,'d');
+}
+
+function search(query) {
+  if (!query.trim()) return [];
+  const q = normalize(query);
+  return templates.filter(t => {
+    const haystack = normalize(t.name + ' ' + (t.keywords||[]).join(' ') + ' ' + t.category);
+    return haystack.includes(q);
+  });
+}
+
+function renderResults(items, query) {
+  const el = document.getElementById('results');
+  document.getElementById('hero').classList.add('compact');
+
+  if (!query.trim()) {
+    el.innerHTML = '';
+    document.getElementById('hero').classList.remove('compact');
+    return;
+  }
+
+  if (!items.length) {
+    el.innerHTML = `<div class="empty"><strong>🔍</strong>Không tìm thấy "<b>${query}</b>"<br>Thử từ khác như: menu, nhân viên, doanh thu...</div>`;
+    return;
+  }
+
+  el.innerHTML = `<div class="results-label">${items.length} kết quả cho "<b>${query}</b>"</div>` +
+    items.map(t => `
+      <div class="result-item" onclick="openPopup(${t.id})">
+        <div class="item-icon ${fileBg[t.type]||''}">${fileIcons[t.type]||'📁'}</div>
+        <div class="item-info">
+          <div class="item-name">${t.name}</div>
+          <div class="item-meta">${t.type} · ${t.size}</div>
+        </div>
+        <span class="item-cat">${t.category}</span>
+        <button class="btn-dl" onclick="event.stopPropagation();openPopup(${t.id})">Tải về</button>
+      </div>
+    `).join('');
+}
+
+function openPopup(id) {
+  currentItem = templates.find(t => t.id === id);
+  if (!currentItem) return;
+  document.getElementById('popupTitle').textContent = currentItem.name;
+  document.getElementById('affLink').href = AFFILIATE_URL;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closePopup() {
+  document.getElementById('overlay').classList.remove('show');
+}
+
+function doDownload() {
+  closePopup();
+  if (currentItem) window.open(currentItem.drive_url, '_blank');
+  showToast();
+}
+
+function doDownloadFromAff() {
+  window.open(AFFILIATE_URL, '_blank');
+  closePopup();
+  setTimeout(() => {
+    if (currentItem) window.open(currentItem.drive_url, '_blank');
+    showToast();
+  }, 800);
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function quickSearch(kw) {
+  const input = document.getElementById('searchInput');
+  input.value = kw;
+  input.dispatchEvent(new Event('input'));
+  input.focus();
+}
+
+document.getElementById('overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('overlay')) closePopup();
+});
+
+let debounce;
+document.getElementById('searchInput').addEventListener('input', e => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => {
+    renderResults(search(e.target.value), e.target.value);
+  }, 200);
+});
+
+loadTemplates();
+</script>
+</body>
+</html>
