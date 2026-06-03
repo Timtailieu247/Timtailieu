@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Template Quán Cà Phê — Tìm & Tải Miễn Phí</title>
+<title>Template PANDA— Tìm & Tải Miễn Phí</title>
 <style>
   :root {
     --bg: #f9f8f5;
@@ -326,16 +326,16 @@
 <body>
 
 <div class="hero" id="hero">
-  <div class="logo">Template miễn phí</div>
+  <div class="logo">Kho Template</div>
   <h1 class="tagline">Tìm tài liệu bạn cần</h1>
-  <p class="sub">Kho template miễn phí cho chủ quán cà phê — menu, nhân sự, tài chính, vận hành</p>
+  <p class="sub">Kho template miễn phí đa ngành nghề — menu, nhân sự, tài chính, vận hành, học ngôn ngữ</p>
 
   <div class="search-wrap">
     <input
       class="search-input"
       id="searchInput"
       type="text"
-      placeholder="Nhập tên template... vd: menu, chấm công, doanh thu"
+      placeholder="Nhập tên template... vd: Mẫu báo cáo, doanh thu, học tiếng anh, template content"
       autocomplete="off"
     />
     <span class="search-icon">
@@ -384,7 +384,7 @@
 <div class="toast" id="toast">⬇ Đang mở file tải xuống...</div>
 
 <script>
-const AFFILIATE_URL = 'https://s.shopee.vn/BQzdnsvYf';
+const AFFILIATE_URL = 'https://shope.ee/THAY_LINK_AFF_CUA_BAN';
 
 let templates = [];
 let currentItem = null;
@@ -399,6 +399,7 @@ async function loadTemplates() {
   } catch(e) {
     templates = [];
   }
+  return templates;
 }
 
 function normalize(str) {
@@ -499,7 +500,16 @@ document.getElementById('searchInput').addEventListener('input', e => {
   }, 200);
 });
 
-loadTemplates();
+loadTemplates().then(() => {
+  // Auto-search từ URL param ?q=...
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q');
+  if (q) {
+    const input = document.getElementById('searchInput');
+    input.value = q;
+    renderResults(search(q), q);
+  }
+});
 </script>
 </body>
 </html>
