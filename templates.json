@@ -62,6 +62,33 @@
     "category": "Học tiếng anh",
     "drive_url": "https://docs.google.com/spreadsheets/d/1qACHbOVPYqjHPM74K05irOZezYfI8Gm_4LIXOtV2Whc/edit?usp=sharing"
   },
+        {
+    "id": 9,
+    "name": "Lộ trình học tiếng Trung",
+    "keywords": ["lotrinhhoctiengtrung"],
+    "type": "Excel",
+    "size": "89 KB",
+    "category": "Học tiếng trung",
+    "drive_url": "https://drive.google.com/drive/folders/1tKbb5b1GJdBntI80hTsVEnW7rXrWv3qq"
+  },
+        {
+    "id": 10,
+    "name": "Bài tập dịch Việt Trung",
+    "keywords": ["Baitapdichviettrung"],
+    "type": "Excel",
+    "size": "89 KB",
+    "category": "Học tiếng Trung",
+    "drive_url": "https://drive.google.com/drive/folders/1YRRY8tSnSKFRicsIGSf7RONOr6PdGEKd"
+  },
+        {
+    "id": 11,
+    "name": "48 ngày lấy gốc tiếng anh Cô Mai Phương",
+    "keywords": ["48ngaylaygoctienganhcomaiphuong"],
+    "type": "Excel",
+    "size": "89 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://docs.google.com/spreadsheets/d/1qACHbOVPYqjHPM74K05irOZezYfI8Gm_4LIXOtV2Whc/edit?usp=sharing"
+  },
   {
     "id": 6,
     "name": "Khóa học IELTS Ngọc Bách",
