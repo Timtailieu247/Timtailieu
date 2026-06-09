@@ -217,21 +217,12 @@
   },
                                     {
     "id": 25,
-    "name": "Tiếng Trung HSK1",
-    "keywords": ["tiengtrunghsk1"],
-    "type": "Drive",
-    "size": "89 KB",
-    "category": "Học tiếngtrung",
-    "drive_url": "https://drive.google.com/drive/folders/1hWdrTitzwURdoktdYQPHUORxuWCnAhZp"
-  },
-                                    {
-    "id": 25,
     "name": "Tiếng Trung HSK3",
     "keywords": ["tiengtrunghsk3"],
     "type": "Drive",
     "size": "89 KB",
     "category": "Học tiếngtrung",
-    "drive_url": "https://drive.google.com/drive/folders/1dvChpNGMi1zVJYKyUDOxGaoUpZEECJzj"
+    "drive_url": "https://drive.google.com/drive/folders/1hWdrTitzwURdoktdYQPHUORxuWCnAhZp"
   },
                                     {
     "id": 25,
