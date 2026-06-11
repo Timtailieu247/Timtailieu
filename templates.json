@@ -305,6 +305,15 @@
     "category": "Học tiếng anh",
     "drive_url": "https://docs.google.com/spreadsheets/d/1tear7d9ouLkhOIJBcQbiSBv7Bxq2OG0JXhhpPQArMDk/edit?gid=0#gid=0"
   },
+                                                      {
+    "id": 33,
+    "name": "Khóa học tin học văn phòng vip",
+    "keywords": ["khoahoctinhocvanphong"],
+    "type": "Drive",
+    "size": "89 KB",
+    "category": "Vận hành",
+    "drive_url": "https://drive.google.com/drive/folders/19TIcajH26y2uh5bV3vXxoqGb4D9eAQt7"
+  },
   {
     "id": 6,
     "name": "Khóa học IELTS Ngọc Bách",
