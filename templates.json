@@ -323,6 +323,15 @@
     "category": "Khác",
     "drive_url": "https://drive.google.com/drive/folders/1zjJnKt_oIxEA2MiOy7Kury_Hp826MQ5v"
   },
+                                                          {
+    "id": 35,
+    "name": "Plan du lịch Đài Loan",
+    "keywords": ["Plandulichdailoan"],
+    "type": "Drive",
+    "size": "89 KB",
+    "category": "Khác",
+    "drive_url": "https://docs.google.com/spreadsheets/d/1IpWcGreSj9TXPUKv3tlFHESPQxwaio9r8WGABuROWas/edit?gid=2084945952#gid=2084945952"
+  },
   {
     "id": 6,
     "name": "Khóa học IELTS Ngọc Bách",
