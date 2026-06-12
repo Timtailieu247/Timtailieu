@@ -329,7 +329,7 @@
     "keywords": ["Plandulichdailoan"],
     "type": "Drive",
     "size": "89 KB",
-    "category": "Khác",
+    "category": "Plan du lịch",
     "drive_url": "https://docs.google.com/spreadsheets/d/1IpWcGreSj9TXPUKv3tlFHESPQxwaio9r8WGABuROWas/edit?gid=2084945952#gid=2084945952"
   },
                                                             {
@@ -421,6 +421,15 @@
     "size": "89 KB",
     "category": "Khác",
     "drive_url": "https://drive.google.com/drive/folders/1jGz2puO1pLgaEMepYyrrPMyDdqwRshtC"
+  },
+                                                                                {
+    "id": 56,
+    "name": "Plan du lịch Huế",
+    "keywords": ["plandulichhue"],
+    "type": "Drive",
+    "size": "89 KB",
+    "category": "Plan du lịch",
+    "drive_url": "https://docs.google.com/spreadsheets/d/1ewgwclfnDCXEOM76vtLoQeqhLAWZtwGFX2myUlcSkVQ/edit?gid=1303776774#gid=1303776774"
   },
   {
     "id": 6,
