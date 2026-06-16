@@ -316,6 +316,66 @@
   }
   .btn-confirm:hover { background: var(--green-dark); }
 
+  /* ── POPUP MỞ BẰNG TRÌNH DUYỆT ── */
+  .browser-header {
+    background: var(--green);
+    padding: 18px 20px 16px;
+    position: relative;
+  }
+  .browser-header .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+  .browser-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  .copy-link-box {
+    background: #f5f5f5;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 12px;
+    word-break: break-all;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    user-select: all;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
   /* ── TOAST ── */
   .toast {
     position: fixed;
@@ -331,6 +391,9 @@
     transition: transform 0.3s ease, opacity 0.3s;
     opacity: 0;
     pointer-events: none;
+    white-space: nowrap;
+    max-width: calc(100vw - 40px);
+    text-align: center;
   }
   .toast.show {
     transform: translateX(-50%) translateY(0);
@@ -379,7 +442,7 @@
 
 <div class="results" id="results"></div>
 
-<!-- POPUP -->
+<!-- POPUP TẢI FILE (trình duyệt thường) -->
 <div class="overlay" id="overlay">
   <div class="popup">
     <div class="popup-header">
@@ -388,7 +451,7 @@
       <button class="popup-close" onclick="closePopup()">✕</button>
     </div>
     <div class="popup-body">
-      <p>Lưu ý tài liệu này miễn phí 100% bạn sẽ được chuyển sang Shopee trước khi xem tài liệu. Bạn có thể ủng hộ mình bằng cách ghé xem 1 sản phẩm trên Shopee trước nhé 🙏</p>
+      <p>Lưu ý Mở tài liệu bằng trình duyệt để không bị gián đoạn. Tài liệu này miễn phí 100%. Bạn có thể ủng hộ mình bằng cách ghé xem 1 sản phẩm trên Shopee trước nhé 🙏</p>
       <a class="aff-btn" id="affLink" href="#" target="_blank" rel="noopener">
         <div class="aff-logo">🛒</div>
         <div class="aff-text">
@@ -403,6 +466,38 @@
   </div>
 </div>
 
+<!-- POPUP YÊU CẦU MỞ BẰNG TRÌNH DUYỆT (in-app browser) -->
+<div class="overlay" id="overlayBrowser">
+  <div class="popup">
+    <div class="browser-header">
+      <div class="label">⚠️ Không thể tải từ đây</div>
+      <h3>Mở bằng Chrome hoặc Safari</h3>
+      <button class="popup-close" onclick="closeBrowserPopup()">✕</button>
+    </div>
+    <div class="popup-body">
+      <p>Trình duyệt trong app (Facebook, TikTok, Zalo...) không hỗ trợ tải file. Làm theo 3 bước dưới nhé:</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <span>Nhấn <b>Copy link</b> bên dưới</span>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <span>Mở <b>Chrome</b> hoặc <b>Safari</b> trên điện thoại</span>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <span>Dán link vào thanh địa chỉ và tải file bình thường</span>
+        </div>
+      </div>
+      <div class="copy-link-box" id="copyLinkBox"></div>
+    </div>
+    <div class="popup-footer">
+      <button class="btn-confirm" onclick="copyPageLink()">📋 Copy link trang này</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast">⬇ Đang mở file tải xuống...</div>
 
 <script>
@@ -413,6 +508,13 @@ let currentItem = null;
 
 const fileIcons = { Excel: '📊', PDF: '📄', Word: '📝' };
 const fileBg    = { Excel: '', PDF: 'pdf', Word: 'word' };
+
+// ── DETECT IN-APP BROWSER ──
+function isInAppBrowser() {
+  const ua = navigator.userAgent || '';
+  return /FBAN|FBAV|Instagram|TikTok|ZaloApp|Line\/|Twitter|Snapchat/i.test(ua)
+      || (ua.includes('wv') && ua.includes('Android'));
+}
 
 async function loadTemplates() {
   try {
@@ -470,9 +572,19 @@ function renderResults(items, query) {
     `).join('');
 }
 
+// ── MỞ POPUP ──
 function openPopup(id) {
   currentItem = templates.find(t => t.id === id);
   if (!currentItem) return;
+
+  // Nếu đang dùng in-app browser → hiện popup hướng dẫn mở ngoài
+  if (isInAppBrowser()) {
+    document.getElementById('copyLinkBox').textContent = window.location.href;
+    document.getElementById('overlayBrowser').classList.add('show');
+    return;
+  }
+
+  // Trình duyệt thường → hiện popup tải file bình thường
   document.getElementById('popupTitle').textContent = currentItem.name;
   document.getElementById('affLink').href = AFFILIATE_URL;
   document.getElementById('overlay').classList.add('show');
@@ -482,23 +594,55 @@ function closePopup() {
   document.getElementById('overlay').classList.remove('show');
 }
 
-function doDownload() {
-  closePopup();
-  if (currentItem) window.open(currentItem.drive_url, '_blank');
-  showToast();
+function closeBrowserPopup() {
+  document.getElementById('overlayBrowser').classList.remove('show');
 }
 
-function doDownloadFromAff() {
-  window.open(AFFILIATE_URL, '_blank'); 
-  closePopup();
-  if (currentItem) {
-    window.location.href = currentItem.drive_url;  
+// ── COPY LINK TRANG ──
+function copyPageLink() {
+  const link = window.location.href;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(() => {
+      showToast('✅ Đã copy! Dán vào Chrome hoặc Safari');
+    }).catch(() => fallbackCopy(link));
+  } else {
+    fallbackCopy(link);
   }
-  showToast();
 }
 
-function showToast() {
+function fallbackCopy(text) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.style.position = 'fixed';
+  el.style.opacity = '0';
+  document.body.appendChild(el);
+  el.focus();
+  el.select();
+  try {
+    document.execCommand('copy');
+    showToast('✅ Đã copy! Dán vào Chrome hoặc Safari');
+  } catch(e) {
+    showToast('Hãy copy link thủ công nhé');
+  }
+  document.body.removeChild(el);
+}
+
+// ── TẢI FILE (trình duyệt thường) ──
+function doDownloadFromAff() {
+  // Mở Shopee trong tab mới — được phép vì nằm ngay trong user gesture
+  window.open(AFFILIATE_URL, '_blank');
+  closePopup();
+  // Redirect tab hiện tại sang Drive — không bao giờ bị chặn
+  if (currentItem) {
+    window.location.href = currentItem.drive_url;
+  }
+  showToast('⬇ Đang mở file tải xuống...');
+}
+
+// ── TOAST ──
+function showToast(msg) {
   const t = document.getElementById('toast');
+  t.textContent = msg || '⬇ Đang mở file tải xuống...';
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
@@ -510,8 +654,12 @@ function quickSearch(kw) {
   input.focus();
 }
 
+// Đóng overlay khi click nền
 document.getElementById('overlay').addEventListener('click', e => {
   if (e.target === document.getElementById('overlay')) closePopup();
+});
+document.getElementById('overlayBrowser').addEventListener('click', e => {
+  if (e.target === document.getElementById('overlayBrowser')) closeBrowserPopup();
 });
 
 let debounce;
@@ -584,7 +732,6 @@ document.addEventListener('click', e => {
 
 loadTemplates().then(() => {
   buildCatMenu();
-  // Auto-search từ URL param ?q=...
   const params = new URLSearchParams(window.location.search);
   const q = params.get('q');
   if (q) {
