@@ -489,12 +489,12 @@ function doDownload() {
 }
 
 function doDownloadFromAff() {
-  window.open(AFFILIATE_URL, '_blank');
+  window.open(AFFILIATE_URL, '_blank'); 
   closePopup();
-  setTimeout(() => {
-    if (currentItem) window.open(currentItem.drive_url, '_blank');
-    showToast();
-  }, 800);
+  if (currentItem) {
+    window.location.href = currentItem.drive_url;  
+  }
+  showToast();
 }
 
 function showToast() {
