@@ -2066,5 +2066,38 @@
     "size": "114 KB",
     "category": "Học tiếng trung",
     "drive_url": "https://drive.google.com/drive/folders/1A0ZUS1CkSNIP5ncsxa9Z7RJJgUdIIHIW"
+  },
+  {
+    "id": 189,
+    "name": "Sách tiếng Trung HSK 3",
+    "keywords": [
+      "sachtiengtrunghsk3"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng trung",
+    "drive_url": "https://drive.google.com/drive/folders/1bPnKgmyRhH69f5Oeo7ZJ9-jxdvTQUsxo?hl=vi"
+  },
+  {
+    "id": 190,
+    "name": "Sách tài liệu nhân sự HR",
+    "keywords": [
+      "sachtailieunhansu"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Khác",
+    "drive_url": "https://drive.google.com/drive/folders/186ElTyV_UXa5V_Xjl_ECdpoS0OS1xDxl"
+  },
+  {
+    "id": 191,
+    "name": "TẢI LIỆU CHO BỘ PHẬN NHÂN SỰ, KẾ TOÁN, NVVP",
+    "keywords": [
+      "tailieubophannhansuketoan"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Khác",
+    "drive_url": "https://drive.google.com/file/d/1f7Uuraem5zksCPWFLPZmf02EA3CwUJve/view"
   }
 ]
