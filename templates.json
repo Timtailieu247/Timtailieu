@@ -2120,7 +2120,7 @@
     "type": "Drive",
     "size": "114 KB",
     "category": "Học tiếng anh",
-    "drive_url": "https://docs.google.com/spreadsheets/d/1ol16M6gEUXwsBzRzePcQhFW5_mNMwvU4xOHBuotvBFA/edit?gid=0#gid=0"
+    "drive_url": "https://drive.google.com/file/d/1LZJGZ8LHmmp1mU47CffPpKq0eu-xD8UJ/view"
   },
   {
     "id": 194,
@@ -2132,5 +2132,71 @@
     "size": "114 KB",
     "category": "Học tiếng anh",
     "drive_url": "https://drive.google.com/file/d/0B113z1JTweviTGcxN2tXVHB1eTQ/view?resourcekey=0-zjuTu8Z4xV7tfGz6jGhGzQ"
+  },
+  {
+    "id": 195,
+    "name": "Kho tài liệu N5",
+    "keywords": [
+      "khotailieun5"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng nhật",
+    "drive_url": "https://drive.google.com/drive/folders/14cvGKUh4Gu7ojd2JE6FzWL5hCTSFwhaz?fbclid=IwY2xjawS6qqZleHRuA2FlbQIxMABicmlkETFCaWdINU1Sbjk5Z09HUXF2c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvIaGX8528XSXa3wiRz_4zd7S_TsfuboKWwJPnXxK7jryWIUKLaIcMNwnUvd_aem_kw4TRCVT9J4kflLIGhAzIA"
+  },
+  {
+    "id": 196,
+    "name": "Cambridge Movers 1-8",
+    "keywords": [
+      "CambridgeMovers"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/1iVx07dRQeERNr9Js-J_e1_rBRM86JOz4"
+  },
+  {
+    "id": 197,
+    "name": "Reading cấp tốc Band 6-7-8-9",
+    "keywords": [
+      "readingcaptocband6789"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/1UDQZbi6ioCgya-cs4IqGyO45M7mDfaIS"
+  },
+  {
+    "id": 198,
+    "name": "IELTS cho người mới bắt đầu",
+    "keywords": [
+      "ieltschonguoimoibatdau"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/1ToY9G9DQYJWEHV198-yiTB84B6xov2nS"
+  },
+  {
+    "id": 199,
+    "name": "Tài liệu tiếng Nga",
+    "keywords": [
+      "tailieutiengnga"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng Nga",
+    "drive_url": "https://drive.google.com/drive/u/0/folders/1FnmimAT3RvhQ7mpGYk3pxhZE6wuZ36ys?fbclid=IwY2xjawTAJzBleHRuA2FlbQIxMABicmlkETFKUnlSbG82TlhmMFIzU09jc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHly93hGOQfjo8ly92vnwsPzWhcIOcZKXpbO0AG-s1Y5TDLA09cE93IGscZ29_aem_keBrHm7WJTKIfukFgi3Rnw"
+  },
+  {
+    "id": 200,
+    "name": "Ngôn ngữ Phần Lan",
+    "keywords": [
+      "ngonnguphanlan"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Khác",
+    "drive_url": "https://drive.google.com/drive/folders/1W3UnU-lSx0Zl519nYoutu756h1D2g2Kt"
   }
 ]
