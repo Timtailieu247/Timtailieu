@@ -2861,51 +2861,50 @@
   },
   {
     "id": 261,
-    "name": "Giáo trình tiếng hàn tổng hợp",
-    "keywords": [],
-    "type": "Drive",
-    "size": "—",
-    "category": "Khác",
-    "drive_url": "https://drive.google.com/drive/folders/1kkOXh05uwdICwGL0O0OtYDdqtcO7pozF"
-  },
-  {
-    "id": 262,
     "name": "20 Chủ đề từ vựng trọng điểm",
-    "keywords": [],
+    "keywords": [
+      "20chudetuvungtrongdiem"
+    ],
     "type": "Drive",
-    "size": "—",
-    "category": "Khác",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
     "drive_url": "https://drive.google.com/drive/folders/1Jr5dEZ2D4lIlRsQYnCGNjrRuWFAOpBqY"
   },
   {
-    "id": 263,
+    "id": 262,
     "name": "Khóa nền tảng IELTS 0-3.0",
-    "keywords": [],
+    "keywords": [
+      "khoanentangielts0-3"
+    ],
     "type": "Drive",
-    "size": "—",
-    "category": "Khác",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
     "drive_url": "https://drive.google.com/drive/folders/1C_GlXP-fj02wtxXSXBoUvvc4KmBZHzSX"
   },
   {
-    "id": 264,
+    "id": 263,
     "name": "Bứt phá IELTS 3.0-4.5",
-    "keywords": [],
+    "keywords": [
+      "butphaielts3-4"
+    ],
     "type": "Drive",
-    "size": "—",
-    "category": "Khác",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
     "drive_url": "https://drive.google.com/drive/folders/1meKJpDPlNkeOpT6GhPDTvpNh3Rm_bdze"
   },
   {
-    "id": 265,
+    "id": 264,
     "name": "Chinh phục IELTS 4.5-5.5",
-    "keywords": [],
+    "keywords": [
+      "chinhphucielts4-5"
+    ],
     "type": "Drive",
-    "size": "—",
-    "category": "Khác",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
     "drive_url": "https://drive.google.com/drive/folders/1LoTNdxEhK41MOG0zsmuZGLoVqJyYLlTg"
   },
   {
-    "id": 266,
+    "id": 265,
     "name": "50 bài tập ngữ pháp Tiếng Anh P2 Full đáp án",
     "keywords": [
       "50baitapnguphapTAP2"
@@ -2916,7 +2915,7 @@
     "drive_url": "https://drive.google.com/drive/folders/17xAk5KWn5Bbvo0D_-HWVjACzZ_QibGBe"
   },
   {
-    "id": 267,
+    "id": 266,
     "name": "Full bộ từ vựng ôn thi TOEIC từ 0-990",
     "keywords": [
       "fullbotuvungonthitoeic"
@@ -2927,7 +2926,7 @@
     "drive_url": "https://drive.google.com/file/d/1lZ0NKDWByOHGxR9hifXQ7534KAKAm5g2/view?fbclid"
   },
   {
-    "id": 268,
+    "id": 267,
     "name": "Hướng dẫn reading IELTS chuyên sâu",
     "keywords": [
       "huongdanreadingielts"
@@ -2938,7 +2937,7 @@
     "drive_url": "https://docs.google.com/document/d/1aVFuJn_lJkjU1GVqRFl1cavZLzjZvwpCmc2w9NXOgHM/edit?tab=t.0"
   },
   {
-    "id": 269,
+    "id": 268,
     "name": "Tổng hợp EST 2020-2024",
     "keywords": [
       "est2020-2024"
@@ -2949,7 +2948,7 @@
     "drive_url": "https://drive.google.com/drive/folders/1eAO4HgUpyZ0eK-6RwARqMz8Dia9X8PzP?fbclid"
   },
   {
-    "id": 270,
+    "id": 269,
     "name": "Nâng cấp vốn từ nâng tầm diễn đạt",
     "keywords": [
       "nangtamvontu"
@@ -2960,7 +2959,7 @@
     "drive_url": "https://docs.google.com/document/d/14OLiXuLJ6_Wln24wl6q3sktKTN2JG64v/edit?rtpof=true&sd=true"
   },
   {
-    "id": 271,
+    "id": 270,
     "name": "Công thức viết văn 9+",
     "keywords": [
       "congthucvietvan9+"
