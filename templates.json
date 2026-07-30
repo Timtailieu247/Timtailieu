@@ -480,7 +480,7 @@
     ],
     "type": "Drive",
     "size": "100 KB",
-    "category": "Khác",
+    "category": "Edit video",
     "drive_url": "https://drive.google.com/drive/folders/1jGz2puO1pLgaEMepYyrrPMyDdqwRshtC"
   },
   {
@@ -2968,5 +2968,104 @@
     "size": "114 KB",
     "category": "Văn học",
     "drive_url": "https://drive.google.com/drive/folders/1x-F8ekXE6IZHjlbPLHRBFwOy4pSteAZ9"
+  },
+  {
+    "id": 271,
+    "name": "English grammar master in 30 days",
+    "keywords": [
+      "Englishgrammarmasterin30days"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/file/d/1hx0q6wOsrrDCrc7r9VDojmXK_5tiAyig/view"
+  },
+  {
+    "id": 272,
+    "name": "TRỌN BỘ IPA+NGỮ ÂM+PHÁT ÂM+TRỌNG ÂM+ĐÁNH VẦN",
+    "keywords": [
+      "trongboipa"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/1cCNwg7nnOZtUOeXgylcBe3zhG5kt0rup"
+  },
+  {
+    "id": 273,
+    "name": "VOL 9 TEST 1 PASSAGE 1",
+    "keywords": [
+      "vol9test1passage1"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://docs.google.com/spreadsheets/d/1nfm6aZUeXhmRXvowEx74bT5VKjs8Ui-mJihbGUBfruo/edit?gid=365208285#gid=365208285"
+  },
+  {
+    "id": 274,
+    "name": "Huy_Forum_IELTS_Marathon_21_Day_Companion_Student_Book.pdf",
+    "keywords": [
+      "Huyforumieltsmarathon"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/file/d/1HrQ2hdgtsdf-nv6xoD0oTCPEFgNeruaM/view"
+  },
+  {
+    "id": 275,
+    "name": "CT làm văn",
+    "keywords": [
+      "ctlamvan"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Văn học",
+    "drive_url": "https://drive.google.com/drive/folders/1vl3LYk06BEGcTwLJf_Y9e7tKU4E4wNYf"
+  },
+  {
+    "id": 276,
+    "name": "Tổng hợp tài liệu văn tất cả các cấp",
+    "keywords": [
+      "tonghoptailieuvancaccap"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Văn học",
+    "drive_url": "https://drive.google.com/drive/folders/1e3ZlgF9_D-hGZZqzKIRBHQ7X-iqdISD4"
+  },
+  {
+    "id": 277,
+    "name": "IELTS Writing",
+    "keywords": [
+      "IELTSWriting"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/10eePhUHg-aKmhRDsI75wVpsZa8AphvQd"
+  },
+  {
+    "id": 278,
+    "name": "IELTS Cambridge",
+    "keywords": [
+      "IELTSCambridge"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/1IqZTw0J1jt1QySaZN4mjDOesufCDzuvf"
+  },
+  {
+    "id": 279,
+    "name": "IELTS Reading",
+    "keywords": [
+      "IELTSReading"
+    ],
+    "type": "Drive",
+    "size": "114 KB",
+    "category": "Học tiếng anh",
+    "drive_url": "https://drive.google.com/drive/folders/1zgMqtg2M7rvCiq9McYKWhNbZPFqeOD9h"
   }
 ]
