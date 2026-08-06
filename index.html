@@ -288,7 +288,7 @@ align-items: center;
 justify-content: center;
 }
 
-.popup-body { padding: 18px 20px; }
+.popup-body { padding: 18px 20px 0; }
 .popup-body p {
 font-size: 13px;
 color: var(--muted);
@@ -306,6 +306,7 @@ background: #fff7f0;
 border: 1.5px solid var(--orange);
 border-radius: var(--radius-sm);
 cursor: pointer;
+margin-bottom: 16px;
 transition: background 0.15s;
 text-decoration: none;
 }
@@ -326,12 +327,22 @@ flex-shrink: 0;
 .aff-text span { font-size: 11px; color: var(--muted); }
 .aff-arrow { color: var(--orange); font-size: 18px; }
 
-.redirect-note {
-margin-top: 14px;
-font-size: 12px;
-color: var(--muted);
-text-align: center;
+.popup-footer {
+padding: 0 20px 20px;
 }
+.btn-confirm {
+width: 100%;
+padding: 12px;
+font-size: 14px;
+font-weight: 500;
+background: var(--green);
+color: #fff;
+border: none;
+border-radius: 100px;
+cursor: pointer;
+transition: background 0.15s;
+}
+.btn-confirm:hover { background: var(--green-dark); }
 
 /* ── TOAST ── */
 .toast {
@@ -405,16 +416,17 @@ Thử tìm:
 <button class="popup-close" onclick="closePopup()">✕</button>
 </div>
 <div class="popup-body">
-<p>Tài liệu này miễn phí 100%. Bấm vào bên dưới để xem sản phẩm gợi ý trên Shopee — sau đó trang tài liệu sẽ tự động mở ra cho bạn 🙏</p>
-<a class="aff-btn" id="affLink" href="#" target="_blank" rel="noopener" onclick="onAffClick()">
+<p>Lưu ý Mở tài liệu bằng trình duyệt để không bị gián đoạn. Tài liệu này miễn phí 100%. Bạn có thể ủng hộ mình bằng cách ghé xem 1 sản phẩm trên Shopee trước nhé 🙏</p>
+<a class="aff-btn" id="affLink" href="#" target="_blank" rel="noopener">
 <div class="aff-logo">🛒</div>
 <div class="aff-text">
-<strong id="affLinkText">Xem trên Shopee</strong>
-<span>Tài liệu sẽ tự mở sau khi bấm</span>
+<strong>Xem ngay trên Shopee</strong>
 </div>
 <span class="aff-arrow">→</span>
 </a>
-<p class="redirect-note" id="redirectNote"></p>
+</div>
+<div class="popup-footer">
+<button class="btn-confirm" onclick="doDownloadFromAff()">Xem Shopee → Tải file</button>
 </div>
 </div>
 </div>
@@ -491,12 +503,6 @@ currentItem = templates.find(t => t.id === id);
 if (!currentItem) return;
 document.getElementById('popupTitle').textContent = currentItem.name;
 document.getElementById('affLink').href = AFFILIATE_URL;
-
-// reset trạng thái mỗi lần mở popup
-document.getElementById('affLink').classList.remove('done');
-document.getElementById('affLinkText').textContent = 'Xem trên Shopee';
-document.getElementById('redirectNote').textContent = '';
-
 document.getElementById('overlay').classList.add('show');
 }
 
@@ -504,21 +510,19 @@ function closePopup() {
 document.getElementById('overlay').classList.remove('show');
 }
 
-// Bấm nút Shopee: mở Shopee (qua href/target mặc định của thẻ <a>),
-// đồng thời tự động mở trang tài liệu ngay sau đó, không cần bước xác nhận riêng.
-function onAffClick() {
-document.getElementById('affLink').classList.add('done');
-document.getElementById('affLinkText').textContent = '✓ Đã mở Shopee';
-document.getElementById('redirectNote').textContent = 'Đang chuyển sang trang tài liệu...';
-
-if (currentItem) {
-window.open(currentItem.drive_url, '_blank');
+function doDownload() {
+closePopup();
+if (currentItem) window.open(currentItem.drive_url, '_blank');
+showToast();
 }
 
-setTimeout(() => {
+function doDownloadFromAff() {
+window.open(AFFILIATE_URL, '_blank');
 closePopup();
+setTimeout(() => {
+if (currentItem) window.open(currentItem.drive_url, '_blank');
 showToast();
-}, 500);
+}, 800);
 }
 
 function showToast() {
