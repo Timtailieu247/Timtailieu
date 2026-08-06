@@ -288,7 +288,7 @@ align-items: center;
 justify-content: center;
 }
 
-.popup-body { padding: 18px 20px 0; }
+.popup-body { padding: 18px 20px; }
 .popup-body p {
 font-size: 13px;
 color: var(--muted);
@@ -306,7 +306,6 @@ background: #fff7f0;
 border: 1.5px solid var(--orange);
 border-radius: var(--radius-sm);
 cursor: pointer;
-margin-bottom: 16px;
 transition: background 0.15s;
 text-decoration: none;
 }
@@ -327,35 +326,12 @@ flex-shrink: 0;
 .aff-text span { font-size: 11px; color: var(--muted); }
 .aff-arrow { color: var(--orange); font-size: 18px; }
 
-.popup-footer {
-padding: 0 20px 20px;
-}
-.btn-confirm {
-width: 100%;
-padding: 12px;
-font-size: 14px;
-font-weight: 500;
-background: var(--green);
-color: #fff;
-border: none;
-border-radius: 100px;
-cursor: pointer;
-transition: background 0.15s;
-}
-.btn-confirm:hover { background: var(--green-dark); }
-.btn-confirm:disabled {
-background: var(--border);
+.redirect-note {
+margin-top: 14px;
+font-size: 12px;
 color: var(--muted);
-cursor: not-allowed;
+text-align: center;
 }
-.btn-confirm:disabled:hover { background: var(--border); }
-
-.aff-btn.done {
-border-color: var(--green);
-background: var(--green-light);
-}
-.aff-btn.done .aff-logo { background: var(--green); }
-.aff-btn.done .aff-arrow { color: var(--green-dark); }
 
 /* ── TOAST ── */
 .toast {
@@ -429,17 +405,16 @@ Thử tìm:
 <button class="popup-close" onclick="closePopup()">✕</button>
 </div>
 <div class="popup-body">
-<p>Tài liệu này miễn phí 100%. Lưu ý: Mở link bằng trình duyệt để không bị gián đoạn. Bạn xem giúp mình 1 sản phẩm trên Shopee (bước 1), sau đó nút tải tài liệu bên dưới sẽ mở khóa (bước 2) 🙏</p>
+<p>Tài liệu này miễn phí 100%. Bấm vào bên dưới để xem sản phẩm gợi ý trên Shopee — sau đó trang tài liệu sẽ tự động mở ra cho bạn 🙏</p>
 <a class="aff-btn" id="affLink" href="#" target="_blank" rel="noopener" onclick="onAffClick()">
 <div class="aff-logo">🛒</div>
 <div class="aff-text">
-<strong id="affLinkText">Bước 1: Xem trên Shopee</strong>
+<strong id="affLinkText">Xem trên Shopee</strong>
+<span>Tài liệu sẽ tự mở sau khi bấm</span>
 </div>
 <span class="aff-arrow">→</span>
 </a>
-</div>
-<div class="popup-footer">
-<button class="btn-confirm" id="btnConfirm" disabled onclick="doDownload()">🔒 Bước 2: Xem trước Shopee để mở khóa</button>
+<p class="redirect-note" id="redirectNote"></p>
 </div>
 </div>
 </div>
@@ -517,12 +492,10 @@ if (!currentItem) return;
 document.getElementById('popupTitle').textContent = currentItem.name;
 document.getElementById('affLink').href = AFFILIATE_URL;
 
-// reset về trạng thái khóa mỗi lần mở popup
+// reset trạng thái mỗi lần mở popup
 document.getElementById('affLink').classList.remove('done');
-document.getElementById('affLinkText').textContent = 'Bước 1: Xem trên Shopee';
-const btn = document.getElementById('btnConfirm');
-btn.disabled = true;
-btn.textContent = '🔒 Bước 2: Xem trước Shopee để mở khóa';
+document.getElementById('affLinkText').textContent = 'Xem trên Shopee';
+document.getElementById('redirectNote').textContent = '';
 
 document.getElementById('overlay').classList.add('show');
 }
@@ -531,20 +504,21 @@ function closePopup() {
 document.getElementById('overlay').classList.remove('show');
 }
 
-// Bấm nút Shopee: mở Shopee và mở khóa nút tải tài liệu bên dưới
+// Bấm nút Shopee: mở Shopee (qua href/target mặc định của thẻ <a>),
+// đồng thời tự động mở trang tài liệu ngay sau đó, không cần bước xác nhận riêng.
 function onAffClick() {
 document.getElementById('affLink').classList.add('done');
-document.getElementById('affLinkText').textContent = '✓ Đã xem Shopee';
-const btn = document.getElementById('btnConfirm');
-btn.disabled = false;
-btn.textContent = 'Bước 2: Xem tài liệu';
+document.getElementById('affLinkText').textContent = '✓ Đã mở Shopee';
+document.getElementById('redirectNote').textContent = 'Đang chuyển sang trang tài liệu...';
+
+if (currentItem) {
+window.open(currentItem.drive_url, '_blank');
 }
 
-function doDownload() {
-if (!currentItem) return;
+setTimeout(() => {
 closePopup();
-window.open(currentItem.drive_url, '_blank');
 showToast();
+}, 500);
 }
 
 function showToast() {
