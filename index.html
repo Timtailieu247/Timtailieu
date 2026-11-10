@@ -310,8 +310,11 @@ Thử tìm:
 <div class="toast" id="toast">⬇ Đang mở file tải xuống...</div>
 
 <script>
-const AFFILIATE_URL = 'https://s.shopee.vn/4qH2evJ6CQ';
-const TIKTOK_URL    = 'https://vt.tiktok.com/ZS9ynFDqSyT5F-NnkVm/';   // trang chuyển hướng cùng domain → tới link aff TikTok
+// ── CÔNG TẮC: true = bật popup mở bằng trình duyệt, false = tắt hẳn ──
+const ENABLE_POPUP = false;
+
+const AFFILIATE_URL = 'https://s.shopee.vn/2LZkhX3hQ8';
+const TIKTOK_URL    = 'go-tiktok.html';   // trang chuyển hướng cùng domain → tới link aff TikTok
 
 let templates = [];
 let currentItem = null;
@@ -327,7 +330,7 @@ const IN_APP = /Barcelona|Instagram|FBAN|FBAV|FB_IAB|Threads/i.test(UA);
 const IS_ANDROID = /android/i.test(UA);
 const IS_IOS = /iphone|ipad|ipod/i.test(UA);
 
-if (IN_APP) {
+if (ENABLE_POPUP && IN_APP) {
   document.getElementById('extOverlay').classList.add('show');
 }
 
